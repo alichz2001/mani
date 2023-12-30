@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"errors"
 	"fmt"
 )
 
@@ -10,7 +9,7 @@ func (db *ManiDB) SaveFile(ctx context.Context, file *File) error {
 
 	docMeta, err := db.StorageCollection.CreateDocument(ctx, file)
 	if err != nil {
-		return errors.New("save file error")
+		return DatabaseError
 	}
 
 	file.ID = docMeta.Key

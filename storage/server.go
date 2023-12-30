@@ -9,9 +9,10 @@ import (
 func InitServer() *fiber.App {
 	app := fiber.New(fiber.Config{
 		BodyLimit: MaxBodyLength,
-		//ErrorHandler: func(ctx *fiber.Ctx, err error) error {
-		//	return ctx.SendStatus(http.StatusInternalServerError)
-		//},
+		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
+			//TODO handle errors
+			return nil
+		},
 	})
 	app.Use(requestid.New())
 	app.Use(logger.New())

@@ -54,10 +54,10 @@ func (s *StorageServiceImpl) Upload(ctx context.Context, uploadReq *UploadFileRe
 	if UploadErr != nil {
 
 		if errors.Is(UploadErr, os.ErrExist) {
-			return nil, errors.New("duplicate file name")
+			return nil, DuplicateFileName
 		}
 
-		return nil, errors.New("upload error")
+		return nil, UnknownError
 	}
 
 	file := &File{
@@ -94,12 +94,12 @@ func (s *StorageServiceImpl) doUploadFile(file *multipart.FileHeader, fileName s
 
 	// check file size
 	if file.Size > s.maxFileSize {
-		return errors.New("file size error")
+		return FileSizeError
 	}
 
 	//check storage size
 	if file.Size > s.maxStorageSize-s.usedStorageSize {
-		return errors.New("storage limit")
+		return StorageLimit
 	}
 
 	tmpFile, err := file.Open()
@@ -116,7 +116,7 @@ func (s *StorageServiceImpl) doUploadFile(file *multipart.FileHeader, fileName s
 
 	wroteBytes, writeErr := io.Copy(targetFile, tmpFile)
 	if writeErr != nil || wroteBytes != file.Size {
-		return errors.New("upload file error")
+		return DiskError
 	}
 
 	return nil
