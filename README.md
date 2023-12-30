@@ -85,5 +85,6 @@ make run
 - [ ] add check for static file server to not serve expired files.
 - [ ] add interfaces for more usable and maintainable codes.
 - [ ] add graceful shutdown scenario.
+- [ ] make better buffering for large size files.
 
 
