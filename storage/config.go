@@ -19,12 +19,16 @@ var (
 	MaxFileSize    int64
 
 	FileServerBasePath string
+
+	EncryptionSecret string
 )
 
 func init() {
 	MaxBodyLength = 1024 * 1024 * 1024
 
 	FileServerBasePath = "/v1/storage/files/"
+
+	EncryptionSecret = os.Getenv("ENCRYPTION_SECRET")
 
 	Port = os.Getenv("PORT")
 

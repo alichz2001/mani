@@ -4,7 +4,9 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/gofiber/fiber/v2"
+	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -26,9 +28,30 @@ func AddStorageRouter(app *fiber.App, storageService *StorageServiceImpl) {
 	v1Group.Post("/storage/file/upload", r.UploadFile)
 	v1Group.Get("/storage/file/fetch", r.GetFile)
 
-	app.Static("/v1/storage/files", StorageBasePath, fiber.Static{
+	v1Group.Get("/storage/encrypted_files/:file_name", r.EncryptedFiles)
+
+	v1Group.Static("/storage/files", StorageBasePath, fiber.Static{
 		ModifyResponse: r.ServeFile,
 	})
+}
+
+func (r *StorageRouter) EncryptedFiles(ctx *fiber.Ctx) error {
+
+	fileName := ctx.Params("file_name")
+
+	ciphertext, err := os.ReadFile(StorageBasePath + fileName)
+	if err != nil {
+		return ctx.SendStatus(http.StatusNotFound)
+	}
+
+	plaintext, err := DecryptFile(ciphertext)
+	if err != nil {
+		return EncryptionError
+	}
+
+	log.Print(plaintext)
+
+	return ctx.Send(plaintext)
 }
 
 type GetFileReq struct {

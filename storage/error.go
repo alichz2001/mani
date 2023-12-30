@@ -12,6 +12,7 @@ const (
 	DiskError         ServiceError = "upload file error"
 	DuplicateFileName ServiceError = "duplicate file name"
 	DatabaseError     ServiceError = "database error"
+	EncryptionError   ServiceError = "error"
 
 	UnknownError ServiceError = "Unknown error"
 )

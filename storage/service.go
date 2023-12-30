@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"io"
+	"log"
 	"mime/multipart"
 	"os"
 	"time"
@@ -57,6 +58,7 @@ func (s *StorageServiceImpl) Upload(ctx context.Context, uploadReq *UploadFileRe
 			return nil, DuplicateFileName
 		}
 
+		log.Printf(UploadErr.Error())
 		return nil, UnknownError
 	}
 
@@ -114,8 +116,19 @@ func (s *StorageServiceImpl) doUploadFile(file *multipart.FileHeader, fileName s
 	}
 	defer func() { _ = targetFile.Close() }()
 
-	wroteBytes, writeErr := io.Copy(targetFile, tmpFile)
-	if writeErr != nil || wroteBytes != file.Size {
+	tmpFileContent, err := io.ReadAll(tmpFile)
+	if err != nil {
+		return DiskError
+	}
+
+	tmpFileContentEncrypted, err := EncryptFile(tmpFileContent)
+	if err != nil {
+		log.Println(err)
+		return EncryptionError
+	}
+
+	wroteBytes, writeErr := targetFile.Write(tmpFileContentEncrypted)
+	if writeErr != nil || wroteBytes != len(tmpFileContentEncrypted) {
 		return DiskError
 	}
 

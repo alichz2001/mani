@@ -54,6 +54,7 @@ services:
       - ARANGO_PASSWORD=1234
       - MAX_FILE_SIZE=1000000
       - MAX_STORAGE_SIZE=10000000
+      - ENCRYPTION_SECRET=1234
     depends_on:
       arangodb:
         condition: service_healthy
