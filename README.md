@@ -86,5 +86,6 @@ make run
 - [ ] add interfaces for more usable and maintainable codes.
 - [ ] add graceful shutdown scenario.
 - [ ] make better buffering for large size files.
+- [ ] implement rollback scenario for upload files.  
 
 
