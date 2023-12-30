@@ -7,7 +7,7 @@
 - Simple gateway and authorization server
 - Storage service for store files
 
-You can find project description in this [link]().
+You can find project description in this [link](https://github.com/alichz2001/mani/blob/master/Take_home_challenge_for_Golang_at_Mani.pdf).
 
 
 ## Project requirements
