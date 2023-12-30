@@ -36,6 +36,8 @@ services:
     depends_on:
       arangodb:
         condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
     networks:
       mani:
 
@@ -55,6 +57,8 @@ services:
     depends_on:
       arangodb:
         condition: service_healthy
+      migrator:
+        condition: service_completed_successfully
     networks:
       mani:
     volumes:
@@ -62,14 +66,25 @@ services:
 
 
 
-#  migrator:
-#    image: arangodb
-#    depends_on:
-#      arangodb:
-#        condition: service_healthy
-#    restart: no
-#    command:
-#      - "echo \"db._createDatabase(\"mani\");\" | arangosh --server.password 1234"
+  migrator:
+    image: curlimages/curl
+    depends_on:
+      arangodb:
+        condition: service_healthy
+    restart: no
+    entrypoint: "sh /migrations.sh"
+    volumes:
+      - type: bind
+        source: ./migrations.sh
+        target: /migrations.sh
+    environment:
+      - ARANGO_URI=http://arangodb:8529
+      - ARANGO_DATABASE=mani
+      - ARANGO_USERNAME=root
+      - ARANGO_PASSWORD=1234
+    networks:
+      mani:
+
 volumes:
   arangodb_vol:
   storage_vol:
