@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"github.com/gofiber/fiber/v2"
 	"net/http"
+	"time"
 )
 
 type StorageRouter struct {
@@ -60,7 +62,9 @@ func (r *StorageRouter) UploadFile(ctx *fiber.Ctx) error {
 		return ctx.Status(http.StatusBadRequest).SendString(mapErr.Error())
 	}
 
-	file, uploadErr := r.srv.Upload(uploadReq)
+	c, cancelFunc := context.WithTimeout(ctx.Context(), time.Second*10)
+	defer cancelFunc()
+	file, uploadErr := r.srv.Upload(c, uploadReq)
 	if uploadErr != nil {
 		return ctx.Status(http.StatusBadRequest).SendString(uploadErr.Error())
 	}
