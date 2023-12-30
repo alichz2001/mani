@@ -45,12 +45,7 @@ func NewStorageService(repo *ManiDB) *StorageServiceImpl {
 	}
 }
 
-func (s *StorageServiceImpl) Upload(uploadReq *UploadFileReq) (*File, error) {
-
-	//TODO get context from caller
-	b := context.Background()
-	ctx, cancelFunc := context.WithTimeout(b, time.Second*10)
-	defer cancelFunc()
+func (s *StorageServiceImpl) Upload(ctx context.Context, uploadReq *UploadFileReq) (*File, error) {
 
 	//TODO check  duplicate file name
 	fileName := genFileName(uploadReq.Name)
@@ -83,7 +78,16 @@ func (s *StorageServiceImpl) Upload(uploadReq *UploadFileReq) (*File, error) {
 }
 
 func (s *StorageServiceImpl) Fetch(req *GetFileReq) ([]*File, error) {
-	return s.repo.SearchFileByNameOrTags(req.Name, req.Tags)
+	files, err := s.repo.SearchFileByNameOrTags(req.Name, req.Tags)
+	if err != nil {
+		return nil, err
+	}
+
+	for i := 0; i < len(files); i++ {
+		files[i].addLink()
+	}
+
+	return files, nil
 }
 
 func (s *StorageServiceImpl) doUploadFile(file *multipart.FileHeader, fileName string) error {
@@ -119,7 +123,6 @@ func (s *StorageServiceImpl) doUploadFile(file *multipart.FileHeader, fileName s
 }
 
 func (s *StorageServiceImpl) doUploadFileRollback(fileName string) error {
-
 	//TODO
 	return nil
 }

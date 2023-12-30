@@ -17,10 +17,14 @@ var (
 	ArangoDB       string
 	MaxStorageSize int64
 	MaxFileSize    int64
+
+	FileServerBasePath string
 )
 
 func init() {
-	MaxBodyLength = 1024 * 1024 * 100
+	MaxBodyLength = 1024 * 1024 * 1024
+
+	FileServerBasePath = "/v1/storage/files/"
 
 	Port = os.Getenv("PORT")
 
