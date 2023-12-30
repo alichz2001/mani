@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type File struct {
 	ID         string   `json:"_key,omitempty" validate:"-"`
 	Name       string   `json:"name"`
@@ -11,5 +13,5 @@ type File struct {
 }
 
 func (f *File) addLink() {
-	//f.Link = fmt.Sprintf()
+	f.Link = fmt.Sprintf("%s%s", FileServerBasePath, f.StoredName)
 }
