@@ -11,7 +11,7 @@ func InitServer() *fiber.App {
 		BodyLimit: MaxBodyLength,
 		ErrorHandler: func(ctx *fiber.Ctx, err error) error {
 			//TODO handle errors
-			return nil
+			return err
 		},
 	})
 	app.Use(requestid.New())
