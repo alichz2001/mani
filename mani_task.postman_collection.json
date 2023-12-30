@@ -1,0 +1,886 @@
+{
+	"info": {
+		"_postman_id": "5a6d89f6-7e10-4c8c-96fd-9c131cf32ab7",
+		"name": "mani_task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6252097"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"AliChZ\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gateway_uri}}/v1/auth/signup",
+					"host": [
+						"{{gateway_uri}}"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "valid signup",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"AliChZ2\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_uri}}/v1/auth/signup",
+							"host": [
+								"{{gateway_uri}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:39:11 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "133"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "62891ce0-aea9-4dd4-884b-a5b9ad68e9c3"
+						}
+					],
+					"cookie": [],
+					"body": "{\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6IjQ3NzI2IiwiZXhwIjoxNzA0MDE1NTUyfQ.OZ1dMt_jjLpf9VZGYlDpEJNlyuwsfnr_claXt7Y9bKo\"}"
+				},
+				{
+					"name": "duplicate username",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"AliChZ2\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_uri}}/v1/auth/signup",
+							"host": [
+								"{{gateway_uri}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:39:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "14"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "63891ce0-aea9-4dd4-884b-a5b9ad68e9c3"
+						}
+					],
+					"cookie": [],
+					"body": "register error"
+				}
+			]
+		},
+		{
+			"name": "signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"AliChZ\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{gateway_uri}}/v1/auth/signin",
+					"host": [
+						"{{gateway_uri}}"
+					],
+					"path": [
+						"v1",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "valid login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"AliChZ\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_uri}}/v1/auth/signin",
+							"host": [
+								"{{gateway_uri}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:39:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "64891ce0-aea9-4dd4-884b-a5b9ad68e9c3"
+						}
+					],
+					"cookie": [],
+					"body": "{\"jwt\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6InVzZXJzLzE3MTY3IiwiZXhwIjoxNzA0MDE1NTk0fQ.c_lKUSC4DCBIUWU_ASRSO2NcnluD2G4Lzd4sDaxt-OA\"}"
+				},
+				{
+					"name": "username not found",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"AliChZ1\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{gateway_uri}}/v1/auth/signin",
+							"host": [
+								"{{gateway_uri}}"
+							],
+							"path": [
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:40:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "18"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "65891ce0-aea9-4dd4-884b-a5b9ad68e9c3"
+						}
+					],
+					"cookie": [],
+					"body": "Username not found"
+				}
+			]
+		},
+		{
+			"name": "upload_file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "test11",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "image/png",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "tags",
+							"value": "importatnt",
+							"type": "text"
+						},
+						{
+							"key": "tags",
+							"value": "personal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+					"host": [
+						"{{storage_service_uri}}"
+					],
+					"path": [
+						"v1",
+						"storage",
+						"file",
+						"upload"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "duplicate file name",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test10",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image/png",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/alichz/Downloads/credentials.json"
+								},
+								{
+									"key": "tags",
+									"value": "importatnt",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "personal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:40:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "19"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ad4d0c53-8ca8-481f-a6a0-b2ab782023be"
+						}
+					],
+					"cookie": [],
+					"body": "duplicate file name"
+				},
+				{
+					"name": "valid upload",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image/png",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/alichz/Downloads/credentials.json"
+								},
+								{
+									"key": "tags",
+									"value": "importatnt",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "personal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:40:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "141"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ae4d0c53-8ca8-481f-a6a0-b2ab782023be"
+						}
+					],
+					"cookie": [],
+					"body": "{\"_key\":\"47776\",\"name\":\"test11\",\"stored_name\":\"test11\",\"tags\":[\"importatnt\",\"personal\"],\"type\":\"image/png\",\"created_at\":1703929253,\"link\":\"\"}"
+				},
+				{
+					"name": "large file size error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image/png",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/alichz/Downloads/Dan Ristic - Learning WebRTC_ Develop interactive real-time communication applications with WebRTC-Packt Publishing (2015).pdf"
+								},
+								{
+									"key": "tags",
+									"value": "importatnt",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "personal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"status": "Request Entity Too Large",
+					"code": 413,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:41:14 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "Request Entity Too Large"
+				},
+				{
+					"name": "bad files",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image/png",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "tags",
+									"value": "importatnt",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "personal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:42:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "c801f289-2735-4d2a-a7f5-4a9284a8f87b"
+						}
+					],
+					"cookie": [],
+					"body": "only accept one file"
+				},
+				{
+					"name": "storage limit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test11",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "image/png",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/alichz/Downloads/Corey Scott - Hands-On Dependency Injection in Go_ Develop clean Go code that is easier to read, maintain, and test-Packt Publishing (2018).pdf"
+								},
+								{
+									"key": "tags",
+									"value": "importatnt",
+									"type": "text"
+								},
+								{
+									"key": "tags",
+									"value": "personal",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/upload",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"upload"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:42:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "12"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "c901f289-2735-4d2a-a7f5-4a9284a8f87b"
+						}
+					],
+					"cookie": [],
+					"body": "upload error"
+				}
+			]
+		},
+		{
+			"name": "fetch_files",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test\",\n    \"tags\": [\"personal\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{storage_service_uri}}/v1/storage/file/fetch",
+					"host": [
+						"{{storage_service_uri}}"
+					],
+					"path": [
+						"v1",
+						"storage",
+						"file",
+						"fetch"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "regular fetch file",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"tags\": [\"personal\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/fetch",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"fetch"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:43:37 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "143"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "ca01f289-2735-4d2a-a7f5-4a9284a8f87b"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"_key\":\"47776\",\"name\":\"test11\",\"stored_name\":\"test11\",\"tags\":[\"importatnt\",\"personal\"],\"type\":\"image/png\",\"created_at\":1703929253,\"link\":\"\"}]"
+				},
+				{
+					"name": "no file exists",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test\",\n    \"tags\": [\"personal\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{storage_service_uri}}/v1/storage/file/fetch",
+							"host": [
+								"{{storage_service_uri}}"
+							],
+							"path": [
+								"v1",
+								"storage",
+								"file",
+								"fetch"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sat, 30 Dec 2023 09:44:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2"
+						},
+						{
+							"key": "X-Request-Id",
+							"value": "cb01f289-2735-4d2a-a7f5-4a9284a8f87b"
+						}
+					],
+					"cookie": [],
+					"body": "[]"
+				}
+			]
+		},
+		{
+			"name": "serve_file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{gateway_uri}}/v1/storage/files/:filename",
+					"host": [
+						"{{gateway_uri}}"
+					],
+					"path": [
+						"v1",
+						"storage",
+						"files",
+						":filename"
+					],
+					"variable": [
+						{
+							"key": "filename",
+							"value": "test11"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6InVzZXJzLzE3MTY3IiwiZXhwIjoxNzA0MDEzODQ5fQ.TOMp3YGemRod1TGvBLiz-ItQZ34T4RHb3T1JcbrItqE",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "storage_service_uri",
+			"value": "localhost:9091"
+		},
+		{
+			"key": "gateway_uri",
+			"value": "localhost:9091",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJRCI6InVzZXJzLzE3MTY3IiwiZXhwIjoxNzAzOTU2MTc1fQ.CbnQmXIB4_9wKTGqr7GBhwVzPs-pvu4V9JGfAlcgZ-g",
+			"type": "string"
+		}
+	]
+}
