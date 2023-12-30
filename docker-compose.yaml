@@ -1,0 +1,77 @@
+version: "3"
+
+services:
+
+  arangodb:
+    hostname: "arangodb"
+    image: arangodb
+    environment:
+      - ARANGO_ROOT_PASSWORD=1234
+    ports:
+      - '8529:8529'
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://arangodb:8529/_db/_system/_admin/aardvark/index.html || exit 1
+      interval: 2s
+      timeout: 5s
+      retries: 5
+    networks:
+      mani:
+    volumes:
+      - arangodb_vol:/var/lib/arangodb3
+
+  gateway:
+    build:
+      dockerfile: ./retrieval/Dockerfile
+    hostname: "gateway"
+    environment:
+      - STORAGE_SERVICE_URI=http://storage:9091
+      - SECRET_TOKEN=1234
+      - PORT=9090
+      - ARANGO_URI=http://arangodb:8529
+      - ARANGO_DATABASE=mani
+      - ARANGO_USERNAME=root
+      - ARANGO_PASSWORD=1234
+    ports:
+      - "8080:9090"
+    depends_on:
+      arangodb:
+        condition: service_healthy
+    networks:
+      mani:
+
+  storage:
+    build:
+      dockerfile: ./storage/Dockerfile
+    hostname: "storage"
+    environment:
+      - FS_BASE_PATH=/opt/mani/data/
+      - PORT=9091
+      - ARANGO_URI=http://arangodb:8529
+      - ARANGO_DATABASE=mani
+      - ARANGO_USERNAME=root
+      - ARANGO_PASSWORD=1234
+      - MAX_FILE_SIZE=1000000
+      - MAX_STORAGE_SIZE=10000000
+    depends_on:
+      arangodb:
+        condition: service_healthy
+    networks:
+      mani:
+    volumes:
+      - storage_vol:/opt/mani/data
+
+
+
+#  migrator:
+#    image: arangodb
+#    depends_on:
+#      arangodb:
+#        condition: service_healthy
+#    restart: no
+#    command:
+#      - "echo \"db._createDatabase(\"mani\");\" | arangosh --server.password 1234"
+volumes:
+  arangodb_vol:
+  storage_vol:
+networks:
+  mani:
