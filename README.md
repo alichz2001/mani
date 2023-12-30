@@ -21,13 +21,13 @@ You can find project description in this [link]().
   - [x] (optional) Storage size limit.
 - [x] Retrieval service:
   - [x] Authentication.
-    - [x] register user (sign up).
-    - [x] login user (sing in).
+    - [x] Register user (sign up).
+    - [x] Login user (sing in).
   - [x] Proxy requests to upstream service(Store service).
 - [ ] (optional) Tests.
 - [ ] (optional) Logging.
 - [ ] (optional) Handle fault scenarios.
-  - [x] Helath-checking
+  - [x] Health-checking
 
 ## Used technologies
 - **Fiber**: used as webserver and gateway. [link](https://docs.gofiber.io/)
@@ -40,10 +40,6 @@ You can find project description in this [link]().
 - In this project, I've employed a layered architecture with three logical layers: Model, Service, and Controller. The simplicity of the current task doesn't necessitate additional abstractions or complex packaging. However, for future development, some refactoring may be beneficial. This structure is well-suited for testing purposes.
 - Perhaps, for a production-level 'Store' service, ArangoDB alone might not be sufficient due to anticipated challenges related to Atomicity and Race-conditions. However, for this sample task, it eill be enough.
 - Why 'Fiber'? So while both Gin and Echo are excellent frameworks with their respective advantages and drawbacks, my preference for a web server is Fiber. see this [link](https://medium.com/deno-the-complete-reference/go-gin-vs-fiber-hello-world-performance-6863e597b654)
-
-
-
-
 
 
 ## RUN
@@ -88,5 +84,6 @@ make run
 - [ ] queue disk IO.
 - [ ] add check for static file server to not serve expired files.
 - [ ] add interfaces for more usable and maintainable codes.
+- [ ] add graceful shutdown scenario.
 
 
