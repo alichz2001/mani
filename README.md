@@ -87,5 +87,6 @@ make run
 - [ ] add metadata to proxies requests in gateway. information like user data etc.
 - [ ] queue disk IO.
 - [ ] add check for static file server to not serve expired files.
+- [ ] add interfaces for more usable and maintainable codes.
 
 
