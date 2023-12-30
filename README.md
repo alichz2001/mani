@@ -54,7 +54,7 @@ make run
 -----------------
 ## API Documentation
 
-**Note:** You can find the full API Postman collection in this link.
+**Note:** You can find the full API Postman collection in this [link](https://github.com/alichz2001/mani/blob/master/mani_task.postman_collection.json).
 
 #### 1\. User Authentication
 
