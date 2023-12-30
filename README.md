@@ -80,7 +80,7 @@ make run
   > Serve the file with an exact match to the given name.
 
 ## Personal TODO
-- [ ] rate-limiting and heath-checking for upstream services.
+- [x] rate-limiting and heath-checking for upstream services.
 - [ ] make config more useful. Add reloading config options by signal, file monitor or even REST API.
 - [ ] make better error handling. create const errors and return error messages in fiber ErrorHandler.
 - [ ] use proper context for free unneeded resources.
