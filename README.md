@@ -54,25 +54,25 @@ make run
 
 #### 1\. User Authentication
 
-* POST http://<server>/v1/auth/signup
+* POST http://[server]/v1/auth/signup
   > Create a new user and receive a JWT as a response.
 
-* POST http://<server>/v1/auth/signin
+* POST http://[server]/v1/auth/signin
   > Validate the username and password, and receive a JWT in the response.
 
 #### 2\. File Storage
 
-* POST http://<server>/v1/storage/file/upload
+* POST http://[server]/v1/storage/file/upload
   > Upload a file and save its name and tags in the database.
 
-* GET http://<server>/v1/storage/file/fetch
+* GET http://[server]/v1/storage/file/fetch
   > Get a list of files' metadata based on specified filters.
   **Response:**
   - Files with an exact name match OR any file that has one of the requested tags.
   - If there is no match, retrieve the oldest unexpired file.
   - If there is no unexpired file, the response will be an empty list.
 
-* GET http://<server>/v1/storage/files/<file\_name>
+* GET http://[server]/v1/storage/files/<file\_name>
   > Serve the file with an exact match to the given name.
 
 ## Personal TODO
